@@ -29,7 +29,7 @@
                                     <th>Product Name</th>
                                     <th>Product Image</th>
                                     <th>Product Status</th>
-                                    <th>Product Availability</th>
+                                    <th>Product Stocks</th>
                                     <th>Product Price</th>
                                     <th>Action</th>
                                 </tr>
@@ -54,7 +54,8 @@
                                        }?>
                                             
                                         </td>
-                                    <td>
+                                    <td><?php echo $value->pro_quantity;?></td>    
+                                    <!-- <td>
                                          <?php if($value->pro_availability==1){
                                             echo "In Stock";
                                        }elseif($value->pro_availability==2){
@@ -62,8 +63,8 @@
                                        }else{
                                             echo "Up Coming";
                                        }?>
-                                    </td>
-                                    <td><?php echo $value->pro_price;?></td>
+                                    </td> -->
+                                    <td>₱<?php echo $value->pro_price;?></td>
                                    <td>
                                         <a class="btn btn-info" href="<?php echo base_url()?>edit-product/<?php echo $value->pro_id?>">Edit</a>
                                         <a class="btn btn-danger" href="<?php echo base_url()?>delete-product/<?php echo $value->pro_id?>">Delete</a>

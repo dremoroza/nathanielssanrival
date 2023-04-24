@@ -65,4 +65,10 @@ class InvoiceModel extends CI_Model {
 		$this->db->where('payment_id',$payment_id);
 		$this->db->delete('tbl_payment');
 	}
+
+	public function edit_order_status($status, $id){
+		$data['order_status'] = $status;
+		$this->db->where('order_id',$id);
+		$this->db->update('tbl_order',$data);
+	}
 }

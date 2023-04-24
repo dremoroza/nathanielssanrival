@@ -16,7 +16,8 @@
                            Billing Address
                         </div>
                         <div class="panel-body">
-                          <h4><b>Name:</b><?php echo $cus_info->cus_name?></h4>
+                          <h4><b>Firstname:</b><?php echo $cus_info->cus_name?></h4>
+                          <h4><b>Lastname:</b><?php echo $cus_info->cus_lname?></h4>
                           <h4><b>Email:</b><?php echo $cus_info->cus_email?></h4>
                           <h4><b>Mobile:</b><?php echo $cus_info->cus_mobile?></h4>
                           <h4><b>Address:</b><?php echo $cus_info->cus_address?></h4>
@@ -32,7 +33,8 @@
                           Shipping Address
                         </div>
                         <div class="panel-body">
-                          <h4><b>Name:</b><?php echo $ship_info->cus_name?></h4>
+                          <h4><b>Firstname:</b><?php echo $ship_info->cus_name?></h4>
+                          <h4><b>Lastname:</b><?php echo $ship_info->cus_lname?></h4>
                           <h4><b>Email:</b><?php echo $ship_info->cus_email?></h4>
                           <h4><b>Mobile:</b><?php echo $ship_info->cus_mobile?></h4>
                           <h4><b>Address:</b><?php echo $ship_info->cus_address?></h4>
@@ -85,8 +87,8 @@
                                             
 
                                             <td><?php echo $order->sales_quantity?></td>
-                                            <td>$<?php echo $order->product_price;?></td>
-                                            <td class="center"><?php echo $order->sales_quantity * $order->product_price;?></td>  
+                                            <td>₱<?php echo $order->product_price;?></td>
+                                            <td class="center">₱<?php echo $order->sales_quantity * $order->product_price;?></td>  
 
                                         </tr>
                                         <?php 
@@ -111,8 +113,8 @@
                            Amount Calcutation
                         </div>
                         <div class="panel-body">
-                           <h4><strong>Sub-Total: </strong>$<?php echo $total?></h4>
-                           <h4><strong>Grand-Total: </strong>$<?php echo $total;?></h4>
+                           <h4><strong>Sub-Total: </strong>₱<?php echo $total?></h4>
+                           <h4><strong>Grand-Total: </strong>₱<?php echo $total;?></h4>
                         </div>
                         <!-- <div class="panel-footer">
                             Panel Footer

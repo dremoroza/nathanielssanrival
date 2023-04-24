@@ -22,11 +22,13 @@
                 </h4>
                 <div class="panel-body">
                     <div class="row">
+
                         <div class="col-lg-12">
+                        <span style="font-weight:bold;font-size:13px">Fields mark with <span style="color:red">*</span> are mandatory</span>
                            <h5 style='color:red'> <?php echo validation_errors();?></h5>
                              <?php echo form_open_multipart('save-product','');?>
                                 <div class="form-group">
-                                    <label>Add Product Title</label>
+                                    <label>Add Product Title *</label>
                                     <input type="text" class="form-control" value="" name="pro_title" required="">
                                 </div>
                                  <div class="form-group">
@@ -35,9 +37,8 @@
                                     <script>CKEDITOR.replace('ck')</script>
                                 </div>
                                  <div class="form-group">
-                                    <label>Select Category</label>
-                                    <select class="form-control" name="pro_cat">
-                                        <option>Select One</option>
+                                    <label>Select Category *</label>
+                                    <select class="form-control" name="pro_cat" required>
                                         <?php
                                          foreach ($all_cat as $category) {  ?>
                                         <option value="<?php echo $category->category_id;?>"><?php echo $category->category_name?></option>
@@ -45,8 +46,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Sub Category Auto Selected</label>
-                                    <select class="form-control" name="pro_sub_cat">
+                                    <label>Sub Category *</label>
+                                    <select class="form-control" name="pro_sub_cat" required>
                                             <?php foreach ($all_sub_cat as $sub_cat) {?>
                                             <option  value="<?php echo $sub_cat->sub_cat_id?>">
                                                 <?php echo $sub_cat->sub_category_name?>
@@ -54,52 +55,47 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+    
                                  <div class="form-group">
-                                    <label>Select Brand</label>
-                                    <select class="form-control" name="pro_brand">
-                                        <option>Select One</option>
-                                        <?php $all_brand = $this->ProductModel->get_all_brand()?>
-                                        <?php foreach ($all_brand as $brand) { ?>
-                                        <option value="<?php echo $brand->brand_id;?>"><?php echo $brand->brand_name;?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                 <div class="form-group">
-                                    <label>Add Product Price</label>
+                                    <label>Add Product Price *</label>
                                     <input type="number" class="form-control" value="" name="pro_price" required="">
                                 </div>
                                  <div class="form-group">
-                                    <label>Add Product Quantity</label>
+                                    <label>Add Product Quantity *</label>
                                     <input type="number" class="form-control" value="" name="pro_quantity" required="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Status</label>
-                                    <select class="form-control" name="pro_status">
-                                        <option>Select One</option>
+                                    <label>Product Status *</label>
+                                    <select class="form-control" name="pro_status" required>
+                                        <option value="">Select One</option>
                                         <option value="1">Enable</option>
                                         <option value="2">Disable</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Availability</label>
-                                    <select class="form-control" name="pro_availability">
-                                        <option>Select One</option>
+                                    <label>Product Availability *</label>
+                                    <select class="form-control" name="pro_availability" required>
+                                        <option value="">Select One</option>
                                         <option value="1">In Stock</option>
                                         <option value="2">Out Of Stock</option>
-                                        <option value="3">Up Comming</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Upload Product Image</label>
+                                    <label>Upload Product Image *</label>
                                     <input type="file" name="pro_image">
                                 </div>
                                  <div class="form-group">
-                                    <label>Top Product</label>
+                                    <label>Homepage Slider</label>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="top_product" value="1">Select top product
+                                            <input type="checkbox" name="top_product" value="1">Enable
                                         </label>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Slider Description</label>
+                                    <textarea  id="pro_desc_slider" class="form-control" rows="3" name="pro_desc_slider"></textarea>
+                                    <script>CKEDITOR.replace('pro_desc_slider')</script>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             <?php echo form_close();?>

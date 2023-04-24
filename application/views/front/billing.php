@@ -26,15 +26,23 @@
 							<span style="font-weight:bold;font-size:13px">Fields mark with <span style="color:red">*</span> are mandatory</span>
 							<div class="form-two">
 								<form action="<?php echo base_url()?>place-order" method="post" >
-									<input type="text" placeholder="Name *" name="cus_name" value="<?php echo isset($cus_info->cus_name) ? $cus_info->cus_name : ""?>">
+									Firstname *
+									<input type="text" placeholder="Firstname *" name="cus_name" value="<?php echo isset($cus_info->cus_name) ? $cus_info->cus_name : ""?>">
+									Lastname *
+									<input type="text" placeholder="Lastname *" name="cus_lname" value="<?php echo isset($cus_info->cus_lname) ? $cus_info->cus_lname : ""?>">
 									<input type="hidden" name="cus_id" value="<?php echo isset($cus_info->cus_id) ? $cus_info->cus_id : ""?>">
+									Mobile * (<span style="font-size:13px;color:red">eg. 09178889999</span>)
 									<input type="text" placeholder="Mobile *" name="cus_mobile" value="<?php echo isset($cus_info->cus_mobile) ? $cus_info->cus_mobile : ""?>">
+									Address *
 									<input type="text" placeholder="Address *" name="cus_address" value="<?php echo isset($cus_info->cus_address) ? $cus_info->cus_address : ""?>">
+									City *
 									<input type="text" placeholder="City *" name="cus_city" value="<?php echo isset($cus_info->cus_city) ? $cus_info->cus_city : ""?>">
+									Zipcode *
+									<input type="text" placeholder="Zip *" name="cus_zip" value="<?php echo isset($cus_info->cus_zip) ? $cus_info->cus_zip : ""?>">
+									Country *
 									<select name="cus_country" value="<?php echo $cus_info->cus_country?>">
 										<option value="Philippines" >Philippines</option>
 									</select>
-									<input type="text" placeholder="Zip *" name="cus_zip" value="<?php echo isset($cus_info->cus_zip) ? $cus_info->cus_zip : ""?>">
 							</div>
 							
 						</div>
@@ -44,15 +52,24 @@
 							<p>Shipping Address</p>
 							<span style="font-weight:bold;font-size:13px">Fields mark with <span style="color:red">*</span> are mandatory</span>
 							<div class="form-two">
-									<input type="text" placeholder="Name *" name="sh_cus_name" value="<?php echo isset($sh_cus_info->cus_name) ? $sh_cus_info->cus_name : ""?>">
+									Firstname *
+									<input type="text" placeholder="Firstname *" name="sh_cus_name" value="<?php echo isset($sh_cus_info->cus_name) ? $sh_cus_info->cus_name : ""?>">
+									Lastname *
+									<input type="text" placeholder="Lastname *" name="sh_cus_lname" value="<?php echo isset($sh_cus_info->cus_lname) ? $sh_cus_info->cus_lname : ""?>">
 									<input type="hidden" name="shipping_id"  value="<?php  echo isset($sh_cus_info->shipping_id) ? $sh_cus_info->shipping_id : ""?>">
+									Mobile * (<span style="font-size:13px;color:red">eg. 09178889999</span>)
 									<input type="text" placeholder="Mobile *" name="sh_cus_mobile" value="<?php echo isset($sh_cus_info->cus_mobile) ? $sh_cus_info->cus_mobile : "" ?>">
+									Address *
 									<input type="text" placeholder="Address *" name="sh_cus_address" value="<?php echo  isset($sh_cus_info->cus_address) ? $sh_cus_info->cus_address : ""?>">
+									City *
 									<input type="text" placeholder="City *" name="sh_cus_city" value="<?php echo isset($sh_cus_info->cus_city) ? $sh_cus_info->cus_city : ""?>">
+									Zipcode *
+									<input type="text" placeholder="Zip *" name="sh_cus_zip" value="<?php echo isset( $sh_cus_info->cus_zip) ?  $sh_cus_info->cus_zip : ""?>">
+									Country *
 									<select name="sh_cus_country">
 									<option value="Philippines" >Philippines</option>
 									</select>
-									<input type="text" placeholder="Zip *" name="sh_cus_zip" value="<?php echo isset( $sh_cus_info->cus_zip) ?  $sh_cus_info->cus_zip : ""?>">
+									
 							</div>
 							
 						</div>

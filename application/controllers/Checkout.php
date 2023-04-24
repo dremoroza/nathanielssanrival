@@ -13,14 +13,15 @@ class Checkout extends CI_Controller {
 	}
 	public function customer_registration(){
 		
-	 $this->form_validation->set_rules('cus_name', 'Customer Name', 'trim|required|min_length[5]');
+	 $this->form_validation->set_rules('cus_name', 'Firstname', 'trim|required');
+	 $this->form_validation->set_rules('cus_lname', 'Lastname', 'trim|required');
 	// $this->form_validation->set_rules('cus_email', 'Email', 'trim|required|valid_email');
 	 $this->form_validation->set_rules('cus_email', 'Email', 'required|valid_email|is_unique[tbl_customer.cus_email]');
-	 $this->form_validation->set_rules('cus_mobile', 'Mobile Number', 'trim|required');
+	 $this->form_validation->set_rules('cus_mobile', 'Mobile Number', 'trim|required|min_length[11]');
 	 $this->form_validation->set_rules('cus_address', 'Address', 'trim|required|min_length[5]');
 	 $this->form_validation->set_rules('cus_city', 'City', 'trim|required');
 	 $this->form_validation->set_rules('cus_zip', 'Zip', 'trim|required|min_length[4]');
-	 $this->form_validation->set_rules('cus_password', 'Password', 'trim|required|min_length[8]');
+	 $this->form_validation->set_rules('cus_password', 'Password', 'trim|required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/]');
 	 $this->form_validation->set_rules('con_pass', 'Password Confirmation', 'trim|required|matches[cus_password]');
 
 	 
@@ -33,13 +34,13 @@ class Checkout extends CI_Controller {
 		$sdata['cus_id'] = $this->session->set_userdata($sdata);
 
 		//insert initital shipping data
-		$this->CheckoutModel->insert_shipping_registration($customer_id, $this->input->post('cus_name'), $this->input->post('cus_email'));
+		$this->CheckoutModel->insert_shipping_registration($customer_id, $this->input->post('cus_name'), $this->input->post('cus_lname'), $this->input->post('cus_email'));
 
 		// start registration Successfull mail 
 		$mdata = array();
 		$mdata['name'] = $this->input->post('cus_name');
-		$mdata['from'] = "admin@sumon-it.com";
-		$mdata['admin_full_name'] = "sumon-it.com";
+		$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
+		$mdata['admin_full_name'] = "Nathaniels Sans Rival";
 		$mdata['to'] = $this->input->post('cus_email');
 		$mdata['subject'] = "Registration Successfull......";
 		$mdata['password'] = $this->input->post('cus_password');
@@ -115,7 +116,7 @@ class Checkout extends CI_Controller {
 		 $this->form_validation->set_rules('cus_zip', 'Billing Address Zip', 'trim|required|min_length[4]');
 
 		 $this->form_validation->set_rules('sh_cus_name', 'Shipping Address Name', 'trim|required|min_length[5]');
-		 $this->form_validation->set_rules('sh_cus_mobile', 'Shipping Address Mobile Number', 'trim|required');
+		 $this->form_validation->set_rules('sh_cus_mobile', 'Shipping Address Mobile Number', 'trim|required|min_length[11]');
 		 $this->form_validation->set_rules('sh_cus_address', 'Shipping Address Address', 'trim|required|min_length[5]');
 		 $this->form_validation->set_rules('sh_cus_city', 'Shipping Address City', 'trim|required');
 		 $this->form_validation->set_rules('sh_cus_zip', 'Shipping Address Zip', 'trim|required|min_length[4]');
@@ -157,14 +158,16 @@ class Checkout extends CI_Controller {
 	public function place_order(){
 
 
-		$this->form_validation->set_rules('cus_name', 'Billing Address Name', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('cus_name', 'Billing Address Firstname', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('cus_lname', 'Billing Address Lastname', 'trim|required|min_length[5]');
 		 $this->form_validation->set_rules('cus_mobile', 'Billing Address Mobile Number', 'trim|required');
 		 $this->form_validation->set_rules('cus_address', 'Billing Address Address', 'trim|required|min_length[5]');
 		 $this->form_validation->set_rules('cus_city', 'Billing Address City', 'trim|required');
 		 $this->form_validation->set_rules('cus_zip', 'Billing Address Zip', 'trim|required|min_length[4]');
 
-		 $this->form_validation->set_rules('sh_cus_name', 'Shipping Address Name', 'trim|required|min_length[5]');
-		 $this->form_validation->set_rules('sh_cus_mobile', 'Shipping Address Mobile Number', 'trim|required');
+		 $this->form_validation->set_rules('sh_cus_name', 'Shipping Address Firstname', 'trim|required|min_length[5]');
+		 $this->form_validation->set_rules('sh_cus_lname', 'Shipping Address Lastname', 'trim|required|min_length[5]');
+		 $this->form_validation->set_rules('sh_cus_mobile', 'Shipping Address Mobile Number', 'trim|required|min_length[11]');
 		 $this->form_validation->set_rules('sh_cus_address', 'Shipping Address Address', 'trim|required|min_length[5]');
 		 $this->form_validation->set_rules('sh_cus_city', 'Shipping Address City', 'trim|required');
 		 $this->form_validation->set_rules('sh_cus_zip', 'Shipping Address Zip', 'trim|required|min_length[4]');

@@ -30,7 +30,7 @@
 				<div class="col-sm-6">
 					<h1>Nathaniel's Sans Rival</h1>
 					<h2 ><?php echo $slider->pro_title;?></h2>
-					<p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+					<?php echo $slider->pro_desc_slider;?>
 					<a href="<?php echo base_url()?>product-details/<?php echo $slider->pro_id; ?>">
 						<button type="button" class="btn btn-default get">Get it now</button>
 					</a>

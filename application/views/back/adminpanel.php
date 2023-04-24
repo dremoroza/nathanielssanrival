@@ -110,7 +110,7 @@
                     </li>
 
 
-                    <li>
+                    <!-- <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Brand Option<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -120,8 +120,8 @@
                                 <a href="<?php echo base_url();?>brand-list">Brand List</a>
                             </li>
                         </ul>
-                        <!-- second-level-items -->
-                    </li>
+                
+                    </li> -->
                      <li>
                         <a href="<?php echo base_url()?>manage-order"><i class="fa fa-flask fa-fw"></i>Manage Order</a>
                     </li>
@@ -147,9 +147,9 @@
     <script src="<?php echo base_url()?>assets/back/plugins/pace/pace.js"></script>
     <script src="<?php echo base_url()?>assets/back/scripts/siminta.js"></script>
     <!-- Page-Level Plugin Scripts-->
-    <script src="<?php echo base_url()?>assets/back/plugins/morris/raphael-2.1.0.min.js"></script>
+    <!-- <script src="<?php echo base_url()?>assets/back/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url()?>assets/back/plugins/morris/morris.js"></script>
-    <script src="<?php echo base_url()?>assets/back/scripts/dashboard-demo.js"></script>
+    <script src="<?php echo base_url()?>assets/back/scripts/dashboard-demo.js"></script> -->
     <!--Code for data table-->
    <script src="<?php echo base_url()?>assets/back/plugins/dataTables/dataTables.bootstrap.js"></script>
 

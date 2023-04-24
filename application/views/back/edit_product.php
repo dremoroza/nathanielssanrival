@@ -13,7 +13,6 @@
         <div class="col-lg-12">
             <!-- Form Elements -->
             <div class="panel panel-default">
-              <?php echo $this->session->flashdata('flsh_msg'); ?>
                <h4 class="error">
                     <?php $msg = $this->session->userdata('error_image');
                         echo $msg;
@@ -26,15 +25,16 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
+                        <span style="font-weight:bold;font-size:13px">Fields mark with <span style="color:red">*</span> are mandatory</span>
                            <h5 style='color:red'> <?php echo validation_errors();?></h5>
                              <?php echo form_open_multipart('update-product','');?>
                                 <div class="form-group">
-                                    <label>Add Product Title</label>
+                                    <label>Add Product Title *</label>
                                     <input type="text" class="form-control" value="<?php echo $all_product->pro_title?>" name="pro_title" required="">
                                     <input type="hidden" class="form-control" value="<?php echo $all_product->pro_id?>" name="pro_id">
                                 </div>
                                  <div class="form-group">
-                                    <label>Add Product Description</label>
+                                    <label>Add Product Description *</label>
                                     <textarea  id="ck" class="form-control" rows="3" name="pro_desc">
                                         <?php echo $all_product->pro_desc?>
                                     </textarea>
@@ -42,8 +42,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label>Select Category</label>
-                                    <select class="form-control" name="pro_cat">
-                                        <option>Select One</option>
+                                    <select class="form-control" name="pro_cat" required>
                                         <?php
                                          foreach ($all_cat as $category) {  ?>
                                            <option 
@@ -59,8 +58,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label>Select Sub Category</label>
-                                    <select class="form-control" name="pro_sub_cat">
-                                        <option>Select One</option>
+                                    <select class="form-control" name="pro_sub_cat" required>
                                         <?php
                                          foreach ($all_sub_cat as $sub_category) {  ?>
                                            <option 
@@ -75,31 +73,16 @@
                                     </select>
                                 </div>
                                  <div class="form-group">
-                                    <label>Select Brand</label>
-                                    <select class="form-control" name="pro_brand">
-                                        <option>Select One</option>
-                                        <?php $all_brand = $this->ProductModel->get_all_brand()?>
-                                        <?php foreach ($all_brand as $brand) { ?>
-                                        <option
-                                            <?php if($all_product->pro_brand==$brand->brand_id){?>
-                                                selected="selected";
-                                                <?php }?>
-                                             value="<?php echo $brand->brand_id;?>"><?php echo $brand->brand_name;?>
-                                         </option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                 <div class="form-group">
-                                    <label>Add Product Price</label>
+                                    <label>Add Product Price *</label>
                                     <input type="number" class="form-control" value="<?php echo $all_product->pro_price?>" name="pro_price" required="">
                                 </div>
                                  <div class="form-group">
-                                    <label>Add Product Quantity</label>
+                                    <label>Add Product Quantity *</label>
                                     <input type="number" class="form-control" value="<?php echo $all_product->pro_quantity?>" name="pro_quantity" required="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Status</label>
-                                    <select class="form-control" name="pro_status">
+                                    <label>Product Status *</label>
+                                    <select class="form-control" name="pro_status" required>
                                         
                                     <?php if($all_product->pro_status==1){?>
                                         <option selected="" value="1">Enable</option>
@@ -111,42 +94,43 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Availability</label>
-                                    <select class="form-control" name="pro_availability">
+                                    <label>Product Availability *</label>
+                                    <select class="form-control" name="pro_availability" required>
                                     
                                     <?php if($all_product->pro_availability==1){?>
                                         <option selected="" value="1">In Stock</option>
                                         <option value="2">Out Of Stock</option>
-                                        <option value="3">Up Comming</option>
                                          <?php }elseif($all_product->pro_availability==2){?>
                                          <option value="1">In Stock</option>
                                         <option selected="" value="2">Out Of Stock</option>
-                                        <option value="3">Up Comming</option>
-                                     <?php }elseif($all_product->pro_availability==3){?>
-                                        <option value="1">In Stock</option>
-                                        <option value="2">Out Of Stock</option>
-                                        <option selected="" value="3">Up Comming</option>
-                                    <?php }?>
+                                     <?php }?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Upload Product Image</label>
+                                    <label>Upload Product Image *</label>
                                     <input type="file" name="pro_image">
                                     <input type="hidden" name="old_pro_image" value="<?php echo $all_product->pro_image?>">
                                     <img src="<?php echo base_url().$all_product->pro_image?>" width="80" height="50"/>
 
                                 </div>
                                  <div class="form-group">
-                                    <label>Top Product</label>
+                                    <label>Homepage Slider</label>
                                     <div class="checkbox">
                                         <label>
                                             <?php if($all_product->top_product==1){?>
-                                            <input type="checkbox" name="top_product" value="1" checked="">Select top product
+                                            <input type="checkbox" name="top_product" value="1" checked="">Enable
                                             <?php } else{?>
-                                                 <input type="checkbox" name="top_product" value="1">Select top product
+                                                 <input type="checkbox" name="top_product" value="1">Enable
                                             <?php } ?>
                                         </label>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Slider Description</label>
+                                    <textarea  id="pro_desc_slider" class="form-control" rows="3" name="pro_desc_slider">
+                                    <?php echo $all_product->pro_desc_slider?>
+                                    </textarea>
+                                    <script>CKEDITOR.replace('pro_desc_slider')</script>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
                             <?php echo form_close();?>

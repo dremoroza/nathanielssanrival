@@ -13,10 +13,9 @@ class HomeModel extends CI_Model {
 	// }
 
     public function get_product_by_id($product_id){
-		$this->db->select('tbl_product.*,tbl_brand.brand_name');
+		$this->db->select('tbl_product.*');
 	    $this->db->from('tbl_product');
 		 $this->db->where('pro_id',$product_id);
-	    $this->db->join('tbl_brand', 'tbl_product.pro_brand = tbl_brand.brand_id', 'right outer'); 
 	    $query = $this->db->get();
 	    return $query->row();
 	}

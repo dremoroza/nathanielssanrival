@@ -14,6 +14,11 @@ class Invoice extends CI_Controller{
 		$this->load->model('InvoiceModel');
 	}
 	public function manage_order(){
+
+
+		if($this->input->get('orderstatus', TRUE) && $this->input->get('id', TRUE)){
+			$this->InvoiceModel->edit_order_status($this->input->get('orderstatus', TRUE), $this->input->get('id', TRUE));
+		}
 		$data['all_order'] = $this->InvoiceModel->get_all_order();
 		$data['main_content'] = $this->load->view('back/order_list',$data,true);
 		$this->load->view('back/adminpanel',$data);

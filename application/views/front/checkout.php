@@ -25,17 +25,28 @@
 				
 						 <h5 style='color:red'> <?php echo validation_errors();?></h5>
 						<form action="<?php echo base_url()?>customer-registration" method="post">
-							<input type="text" placeholder="Name *" name="cus_name" value="<?php echo set_value('cus_name'); ?>"/>
+							Firstname *
+							<input type="text" placeholder="Firstname *" name="cus_name" value="<?php echo set_value('cus_name'); ?>"/>
+							Lastname *
+							<input type="text" placeholder="Lastname *" name="cus_lname" value="<?php echo set_value('cus_lname'); ?>"/>
+							Email Address *
 							<input type="email" placeholder="Email Address *" name="cus_email" value="<?php echo set_value('cus_email'); ?>"/>
-							<input type="text" placeholder="Mobile *" name="cus_mobile" >
-							<input type="text" placeholder="Address *" name="cus_address">
-							<input type="text" placeholder="City *" name="cus_city">
+							Mobile * (<span style="font-size:13px;color:red">eg. 09178889999</span>)
+							<input type="text" placeholder="Mobile *" name="cus_mobile" value="<?php echo set_value('cus_mobile'); ?>">
+							Address *
+							<input type="text" placeholder="Address *" name="cus_address" value="<?php echo set_value('cus_address'); ?>">
+							City *
+							<input type="text" placeholder="City *" name="cus_city" value="<?php echo set_value('cus_city'); ?>">
+							Zipcode *
+							<input type="text" placeholder="Zip *" name="cus_zip" style="margin-top:10px" value="<?php echo set_value('cus_zip'); ?>">
+							Country *
 							<select name="cus_country">
 								<option value="Philippines" >Philippines</option>
 							</select>
-							<input type="text" placeholder="Zip *" name="cus_zip" style="margin-top:10px">
-							<input type="password" placeholder="Password *" name="cus_password" />
-							<input type="password" name="con_pass" placeholder="Confirm Password *"/>
+							Password * (<span style="font-size:13px;color:red">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character</span>)
+							<input type="password" placeholder="Password *" name="cus_password" value="<?php echo set_value('cus_password'); ?>"/>
+							Confirm Password *
+							<input type="password" name="con_pass" placeholder="Confirm Password *" value="<?php echo set_value('con_pass'); ?>"/>
 							<button type="submit" class="btn btn-default">Signup</button>
 						</form>
 					</div><!--/sign up form-->

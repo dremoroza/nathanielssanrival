@@ -34,8 +34,8 @@
 				}?>
 			</p>
 			<!-- <p><b>Condition:</b> New</p> -->
-			<p><b>Brand:</b> <?php echo $product_info->brand_name?></p>
-			<a href=""><img src="<?php echo base_url()?>assets/front/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 		</div><!--/product-information-->
 	</div>
 </div>
+<h2 class="title text-center">Product Description</h2>
+<?php echo $product_info->pro_desc?>

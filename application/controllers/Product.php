@@ -39,7 +39,6 @@ class Product extends CI_Controller{
 		$data['all_product'] = $this->ProductModel->edit_product_model($product_id);
 		$data['all_cat'] = $this->ProductModel->get_all_category();
 		$data['all_sub_cat'] = $this->ProductModel->get_all_sub_category();
-		$data['all_brand'] = $this->ProductModel->get_all_brand();
 		$data['main_content'] = $this->load->view('back/edit_product',$data,true);
 		$this->load->view('back/adminpanel',$data);
 		

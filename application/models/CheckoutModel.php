@@ -6,6 +6,7 @@ class CheckoutModel extends CI_Model {
 	public function save_customer_info(){
 		$data = array();
 		$data['cus_name'] = $this->input->post('cus_name');
+		$data['cus_lname'] = $this->input->post('cus_lname');
 		$data['cus_email'] = $this->input->post('cus_email');
 		$data['cus_mobile'] = $this->input->post('cus_mobile');
 		$data['cus_address'] = $this->input->post('cus_address');
@@ -44,6 +45,7 @@ class CheckoutModel extends CI_Model {
 	public function upate_billing_by_id(){
 		$data = array();
 		$data['cus_name'] = $this->input->post('cus_name');
+		$data['cus_lname'] = $this->input->post('cus_lname');
 		$data['cus_mobile'] = $this->input->post('cus_mobile');
 		$data['cus_address'] = $this->input->post('cus_address');
 		$data['cus_city'] = $this->input->post('cus_city');
@@ -58,6 +60,7 @@ class CheckoutModel extends CI_Model {
 	public function upate_shipping_by_id(){
 		$data = array();
 		$data['cus_name'] = $this->input->post('sh_cus_name');
+		$data['cus_lname'] = $this->input->post('sh_cus_lname');
 		$data['cus_mobile'] = $this->input->post('sh_cus_mobile');
 		$data['cus_address'] = $this->input->post('sh_cus_address');
 		$data['cus_city'] = $this->input->post('sh_cus_city');
@@ -87,9 +90,10 @@ class CheckoutModel extends CI_Model {
 		$this->session->set_userdata($sdata);
 	
 	}
-	public function insert_shipping_registration($custId, $name, $email){
+	public function insert_shipping_registration($custId, $name, $lname, $email){
 			$data['cus_id'] = $custId;
 			$data['cus_name'] = $name;
+			$data['cus_lname'] = $lname;
 			$data['cus_email'] = $email;
 
 			$this->db->insert("tbl_shipping",$data);

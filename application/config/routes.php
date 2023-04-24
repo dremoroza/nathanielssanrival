@@ -68,7 +68,7 @@ $route['replay-contact/(.+)'] = 'Contact/replay_contact_by_id/$1';
 
 
 /*Admin Panel*/
-$route['dashboard'] = 'Admin/admindashboard';
+//$route['dashboard'] = 'Admin/admindashboard';
 $route['register-form'] = 'Admin/registerform';
 $route['add-category'] = 'Category/add_category_form';
 $route['add-sub-category'] = 'Category/add_sub_category_form';

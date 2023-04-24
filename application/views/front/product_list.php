@@ -9,7 +9,7 @@
 			<div class="single-products">
 				<div class="productinfo text-center">
 					<img src="<?php echo base_url().$value->pro_image?>" width="268px" height="249px" alt="" />
-					<h2>$<?php echo $value->pro_price?></h2>
+					<h2>₱<?php echo $value->pro_price?></h2>
 					<p><?php echo $value->pro_title?></p>
 					<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 				</div>
