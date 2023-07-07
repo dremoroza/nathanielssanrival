@@ -98,6 +98,11 @@ $route['edit-product/(.+)'] = 'Product/edit_product/$1';
 $route['update-product'] = 'Product/update_product';
 $route['delete-product/(.+)'] = 'Product/delete_product/$1';
 
+/*API*/
+$route['show-sms'] = 'Api/show_sms';
+$route['update-sms/(.+)'] = 'Api/update_sms/$1';
+
+
 // Cart Class
 $route['add-to-cart'] = 'Cart/add_to_cart';
 $route['show-cart'] = 'Cart/show_cart';

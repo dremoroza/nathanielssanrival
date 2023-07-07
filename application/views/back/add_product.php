@@ -58,7 +58,7 @@
     
                                  <div class="form-group">
                                     <label>Add Product Price *</label>
-                                    <input type="number" class="form-control" value="" name="pro_price" required="">
+                                    <input type="number" class="form-control" value="" name="pro_price" required="" step="any">
                                 </div>
                                  <div class="form-group">
                                     <label>Add Product Quantity *</label>
