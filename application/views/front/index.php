@@ -223,21 +223,9 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Service</h2>
+						<h2>Policies</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">FAQ’s</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Policies</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Refund Policy</a></li>
+								<li><a href="/terms-and-condition">Terms and Conditions</a></li>
 							</ul>
 						</div>
 					</div>
@@ -245,12 +233,11 @@
 						<div class="single-widget">
 							<h2>About Us</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Company Information</a></li>
-								<li><a href="#">Store Location</a></li>
+								<li><a href="/contact">Contact Us</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-2">
+					<div class="col-sm-3 col-sm-offset-5">
 						<div class="single-widget">
 							<h2>Subscribe</h2>
 							<form action="#" class="searchform">

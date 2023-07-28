@@ -105,6 +105,16 @@ class Home extends CI_Controller {
 		$data['category_brand'] = "";
 		$this->load->view('front/index',$data);
 	}
+
+
+	public function terms_and_condition(){
+		$data =array();
+		$data['slider'] = "";
+		$data['recommended'] = "";
+		$data['main_content'] = $this->load->view('front/terms','',true);
+		$data['category_brand'] = "";
+		$this->load->view('front/index',$data);
+	}
 	public function insert_contact_info(){
 			$this->form_validation->set_rules('contact_email', 'Email', 'required|valid_email');
 		if($this->form_validation->run()){

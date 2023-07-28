@@ -7,8 +7,17 @@ class OrderHistoryModel extends CI_Model {
 			->join('tbl_order', 'tbl_order.order_id = tbl_order_history.order_id')
 			->join('tbl_shipping', 'tbl_shipping.shipping_id = tbl_order.shipping_id')
 			->from('tbl_order_history')
-			->where('tbl_order.order_status', 'shipped')
+			->where('tbl_order_history.order_status', 'shipped')
 			->where('is_sent', 0)
+			->get()
+			->result();
+			return $data;
+	}
+
+	public function get_all_status_history($id){
+		$data = $this->db->select('*')
+			->from('tbl_order_history')
+			->where('tbl_order_history.order_id', $id)
 			->get()
 			->result();
 			return $data;
@@ -22,5 +31,14 @@ class OrderHistoryModel extends CI_Model {
 			return true;
 		}
 		return false;
+	}
+
+	public function add_order_status_history($status, $id){
+		$data['order_id'] = $id;
+		$data['order_status'] = $status;
+		$data['message'] = "Your order# " . $id . " has been " . $status;
+		$data['is_sent'] = 0;
+
+		$this->db->insert('tbl_order_history', $data);	
 	}
 }
