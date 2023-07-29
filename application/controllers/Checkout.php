@@ -38,7 +38,7 @@ class Checkout extends CI_Controller {
 
 		// start registration Successfull mail 
 		$mdata = array();
-		$mdata['name'] = $this->input->post('cus_name');
+		$mdata['name'] = $this->input->post('cus_name') ." ". $this->input->post('cus_lname');
 		$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
 		$mdata['admin_full_name'] = "Nathaniels Sans Rival";
 		$mdata['to'] = $this->input->post('cus_email');
@@ -89,7 +89,20 @@ class Checkout extends CI_Controller {
 		}
 	}
 	public function billing(){
+		// $client = new \GuzzleHttp\Client();
 
+		// $response = $client->request('POST', 'https://api.paymongo.com/v1/payment_methods', [
+		// 'body' => '{"data":{"attributes":{"type":"gcash"}}}',
+		// 'headers' => [
+		// 	'accept' => 'application/json',
+		// 	'authorization' => 'Basic cGtfdGVzdF9wTTluRHRLdDdyenh2WVNBWUQ4Rk5veXI6',
+		// 	'content-type' => 'application/json',
+		// ],
+		// ]);
+
+		// echo $response->getBody();
+		// exit();
+		
 		if($this->cart->total_items() == NULL) {
 			return redirect("show-cart");
 		}
@@ -156,8 +169,6 @@ class Checkout extends CI_Controller {
 		}
 	}
 	public function place_order(){
-
-
 		$this->form_validation->set_rules('cus_name', 'Billing Address Firstname', 'trim|required|min_length[5]');
 		$this->form_validation->set_rules('cus_lname', 'Billing Address Lastname', 'trim|required|min_length[5]');
 		 $this->form_validation->set_rules('cus_mobile', 'Billing Address Mobile Number', 'trim|required');

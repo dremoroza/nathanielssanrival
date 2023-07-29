@@ -9,8 +9,6 @@ class MailModel extends CI_Model {
 		$this->email->to($data['to']);
 		$this->email->subject($data['subject']);
 		$message_body = $this->load->view("mailscripts/".$template_name,$data,true);
-		// echo $message_body;
-		// exit();
 		$this->email->message($message_body);
 		$this->email->send();
 		$this->email->clear();

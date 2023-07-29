@@ -113,7 +113,7 @@
 											<h4><a href=""><?php echo $items['name']?></a></h4>
 										</td>
 										<td class="cart_price">
-											<p>₱<?php echo $items['price']?></p>
+											<p>₱<?php echo number_format($items['price'],2)?></p>
 										</td>
 										<td class="cart_quantity">
 											<div class="cart_quantity_button">
@@ -130,7 +130,7 @@
 											</div>
 										</td>
 										<td class="cart_total">
-											<p class="cart_total_price">₱<?php echo $items['subtotal']?></p>
+											<p class="cart_total_price">₱<?php echo number_format($items['subtotal'],2)?></p>
 										</td>
 										<td class="cart_delete">
 											<a class="cart_quantity_delete" href="<?php echo base_url()?>delete-to-cart-payment/<?php echo $items['rowid']?>"><i class="fa fa-times"></i></a>
@@ -150,7 +150,24 @@
 								<div class="col-sm-6">
 									<p class="alert alert-warning">Payment Method</p>
 									<span>
-										<label><input type="radio"  name="payment_gateway" value="cash_on_delivery"> Cash on delivery</label>
+										<?php if($cus_info->cus_status == "VIP"){?>
+										<label><input type="radio"  name="payment_gateway" value="cash_on_delivery" checked> Cash on delivery</label><br>
+										<label><input type="radio"  name="payment_gateway" value="bank_deposit">Bank Deposit</label><br>
+										Bank Details:<br>
+										Bank: BPI<br>
+										Account Type: Savings<br>
+										Account Name: Nathaniel's Sans Rival<br>
+										Account #: 897-2232-000<br>
+										<?php }?>
+										<?php if($cus_info->cus_status == "Regular"){?>
+            							<label><input type="radio"  name="payment_gateway" value="bank_deposit" checked>Bank Deposit</label><br>
+										Bank Details:<br>
+										Bank: BPI<br>
+										Account Type: Savings<br>
+										Account Name: Nathaniel's Sans Rival<br>
+										Account #: 897-2232-000<br>
+										<?php }?>
+										
 									</span>
 			
 								</div>
@@ -160,7 +177,7 @@
 											<?php 
 												$cart_total = $this->cart->total();
 											?>
-											<li>Cart Sub Total <span>₱<?php echo $cart_total;?></span></li>
+											<li>Cart Sub Total <span>₱<?php echo number_format($cart_total,2);?></span></li>
 											<?php
 												$tax = ($cart_total*2)/100;
 											?>
@@ -181,7 +198,7 @@
 											?>
 											<!-- <li>Shipping Cost <span>₱<?php echo $shiping?></span></li> -->
 											<?php $g_total = $cart_total?>
-											<li>Total <span>₱<?php echo $g_total;?></span></li>
+											<li>Total <span>₱<?php echo number_format($g_total,2);?></span></li>
 										</ul>
 
 									</div>

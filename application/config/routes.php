@@ -58,6 +58,7 @@ $route['show-post-by-brand-id/(.+)'] = 'Home/show_post_by_brand_id/$1';
 $route['show-post-by-sub-cat-id/(.+)'] = 'Home/show_post_by_sub_cat_id/$1';
 $route['show-product-by-price-range'] = 'Home/show_product_by_price_range';
 $route['contact'] = 'Home/contact_page';
+$route['terms-and-condition'] = 'Home/terms_and_condition';
 $route['contact-form'] = 'Home/insert_contact_info';
 // Contact Form
 $route['contact-message-list'] = 'Contact/get_all_contact_message';
@@ -98,6 +99,11 @@ $route['edit-product/(.+)'] = 'Product/edit_product/$1';
 $route['update-product'] = 'Product/update_product';
 $route['delete-product/(.+)'] = 'Product/delete_product/$1';
 
+/*API*/
+$route['show-sms'] = 'Api/show_sms';
+$route['update-sms/(.+)'] = 'Api/update_sms/$1';
+
+
 // Cart Class
 $route['add-to-cart'] = 'Cart/add_to_cart';
 $route['show-cart'] = 'Cart/show_cart';
@@ -126,7 +132,7 @@ $route['search'] = 'Search/index';
 $route['manage-order'] = 'Invoice/manage_order';
 $route['view-order/(.+)'] = 'Invoice/view_order/$1';
 $route['delete-order/(.+)'] = 'Invoice/delete_order/$1';
-
+$route['manage-user'] = 'Invoice/manage_user';
 
 
 $route['404_override'] = 'Home/_404_page';

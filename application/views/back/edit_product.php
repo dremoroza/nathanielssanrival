@@ -74,7 +74,7 @@
                                 </div>
                                  <div class="form-group">
                                     <label>Add Product Price *</label>
-                                    <input type="number" class="form-control" value="<?php echo $all_product->pro_price?>" name="pro_price" required="">
+                                    <input type="number" step="any" class="form-control" value="<?php echo $all_product->pro_price?>" name="pro_price" required="">
                                 </div>
                                  <div class="form-group">
                                     <label>Add Product Quantity *</label>

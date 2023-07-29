@@ -9,14 +9,14 @@
 			<div class="single-products">
 				<div class="productinfo text-center">
 					<img src="<?php echo base_url().$value->pro_image?>" width="268px" height="249px" alt="" />
-					<h2>₱<?php echo $value->pro_price?></h2>
+					<h2>₱<?php echo number_format($value->pro_price, 2)?></h2>
 					<p><?php echo $value->pro_title?></p>
 					<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 				</div>
 				<div class="product-overlay">
 					<div class="overlay-content">			
 					<form action="<?php echo base_url()?>add-to-cart"  method="post">
-							<h2>₱<?php echo $value->pro_price?></h2><!--This is under form because style factor when product price move to form then style is not formating-->
+							<h2>₱<?php echo number_format($value->pro_price, 2)?></h2><!--This is under form because style factor when product price move to form then style is not formating-->
 							<p><?php echo $value->pro_title?></p>
 							<input type="hidden" value="1" name="qty"/>
 							<input type="hidden" value="<?php echo $value->pro_id?>" name="pro_id"/>

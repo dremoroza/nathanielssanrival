@@ -38,7 +38,7 @@
 								<h4><a href=""><?php echo $items['name']?></a></h4>
 							</td>
 							<td class="cart_price">
-								<p>₱<?php echo $items['price']?></p>
+								<p>₱<?php echo number_format($items['price'],2)?></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -54,7 +54,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">₱<?php echo $items['subtotal']?></p>
+								<p class="cart_total_price">₱<?php echo number_format($items['subtotal'],2)?></p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="<?php echo base_url()?>delete-to-cart/<?php echo $items['rowid']?>"><i class="fa fa-times"></i></a>
@@ -84,7 +84,7 @@
 							<?php 
 								$cart_total = $this->cart->total();
 							?>
-							<li>Cart Sub Total <span>₱<?php echo $cart_total;?></span></li>
+							<li>Cart Sub Total <span>₱<?php echo number_format($cart_total,2);?></span></li>
 							<?php
 								$tax = ($cart_total*2)/100;
 							?>
@@ -111,7 +111,7 @@
 									$gdata = array();
 									$gdata['g_total'] = $g_total;
 									$this->session->set_userdata($gdata);
-							 		echo "₱$g_total";
+							 		echo "₱" . number_format($g_total,2);
 							 	?>
 							 </span></li>
 						</ul>

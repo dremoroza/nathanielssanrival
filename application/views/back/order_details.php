@@ -46,16 +46,41 @@
                 </div>
             </div>
                 <div class="row">
-                     <div class="col-lg-12">
-                         <div class="panel panel-default">
+                     <div class="col-lg-6">
+                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                Invoice # Inv <?php echo $order_info->order_id?>
                             </div>
-                         <h5>
-                             Invoice Date: <?php $date=  $order_info->order_date;
-                               echo date('m-d-y',strtotime($date));
-                             ?>
-                         </h5>
+                            <div class="panel-body">
+                            <h4>
+                                Invoice Date: <?php $date=  $order_info->order_date; echo date('m-d-y',strtotime($date));
+                                ?>
+                            </h4>
+                            <h4>
+                                Payment Method: <?php  echo $payment->payment_type;?>
+                            </h4>       <h4>
+                                Order Message/Notes: <?php  echo $payment->payment_message;?>
+                            </h4>
+
+                            </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-6">
+                         <div class="panel panel-primary">
+                            <div class="panel-heading">
+                               Order Status History
+                            </div>
+                            <div class="panel-body">
+                            <?php if(count($order_status_history) > 0){
+                                $ctr = 1;
+                                foreach($order_status_history as $history){?>
+                            <h5>
+                                <?php echo $ctr;?>.  <?php echo $history->order_status; ?> on <?php echo date('m-d-y',strtotime($history->created_at));?>
+                            </h5>
+                            <?php $ctr++;
+                            }
+                            }?>
+                            </div>
                          </div>
                      </div>
                 </div>

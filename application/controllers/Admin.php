@@ -10,12 +10,12 @@ class Admin extends CI_Controller {
 		$this->load->model('LoginModel');
 	}
 	public function index(){
-		$this->admindashboard();
+		redirect('manage-order');
 	}
 	public function admindashboard(){
 		$data = array();
 		$data['main_content'] = $this->load->view('back/admin_main','',TRUE);
-		$this->load->view('back/adminpanel',$data);
+		//$this->load->view('back/adminpanel',$data);
 	}
 	public function registerform(){
 		$data = array();

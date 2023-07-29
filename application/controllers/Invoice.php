@@ -13,16 +13,31 @@ class Invoice extends CI_Controller{
 		$data =array();
 		$this->load->model('InvoiceModel');
 	}
+	
 	public function manage_order(){
 
 
 		if($this->input->get('orderstatus', TRUE) && $this->input->get('id', TRUE)){
 			$this->InvoiceModel->edit_order_status($this->input->get('orderstatus', TRUE), $this->input->get('id', TRUE));
+			$this->OrderHistoryModel->add_order_status_history($this->input->get('orderstatus', TRUE), $this->input->get('id', TRUE));
 		}
 		$data['all_order'] = $this->InvoiceModel->get_all_order();
 		$data['main_content'] = $this->load->view('back/order_list',$data,true);
 		$this->load->view('back/adminpanel',$data);
 	}
+
+	public function manage_user(){
+
+
+		if($this->input->get('userstatus', TRUE) && $this->input->get('id', TRUE)){
+			$this->InvoiceModel->edit_user_status($this->input->get('userstatus', TRUE), $this->input->get('id', TRUE));
+		}
+		$data['all_user'] = $this->InvoiceModel->get_all_user();
+		$data['main_content'] = $this->load->view('back/user_list',$data,true);
+		$this->load->view('back/adminpanel',$data);
+	}
+
+
 	public function view_order($order_id){
 		$data['order_info'] = $this->InvoiceModel->get_order_info_by_id($order_id);
 		$order_info = $this->InvoiceModel->get_order_info_by_id($order_id);
@@ -31,6 +46,8 @@ class Invoice extends CI_Controller{
 		$data['cus_info'] = $this->InvoiceModel->get_customer_info_by_id($customer_id);
 		$data['ship_info'] = $this->InvoiceModel->get_shipping_info_by_id($shipping_id);
 		$data['order_details_info'] = $this->InvoiceModel->get_all_order_details_by_id($order_id);
+		$data['payment'] = $this->InvoiceModel->get_payment_by_id($order_id);
+		$data['order_status_history'] = $this->OrderHistoryModel->get_all_status_history($order_id);
 		$data['main_content'] = $this->load->view('back/order_details',$data,true);
 		$this->load->view('back/adminpanel',$data);
 	}

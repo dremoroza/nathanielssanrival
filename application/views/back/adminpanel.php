@@ -126,6 +126,9 @@
                         <a href="<?php echo base_url()?>manage-order"><i class="fa fa-flask fa-fw"></i>Manage Order</a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url()?>manage-user"><i class="fa fa-user fa-fw"></i>Manage User</a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url();?>register-form"><i class="fa fa-user-plus fa-fw"></i>Register User</a>
                     </li>
                    

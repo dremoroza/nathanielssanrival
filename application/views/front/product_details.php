@@ -12,7 +12,7 @@
 			<!-- <img src="<?php echo base_url()?>assets/front/images/product-details/rating.png" alt="" /> -->
 			<span>
 				<form action="<?php echo base_url()?>add-to-cart"  method="post">
-					<span>₱<?php echo $product_info->pro_price?></span><!--This is under form because style factor when product price move to form then style is not formating-->
+					<span>₱<?php echo number_format($product_info->pro_price, 2)?></span><!--This is under form because style factor when product price move to form then style is not formating-->
 					<label>Quantity:</label>
 					<input type="text" value="1" name="qty"/>
 					<input type="hidden" value="<?php echo $product_info->pro_id?>" name="pro_id"/>
