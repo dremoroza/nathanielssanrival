@@ -151,25 +151,34 @@
 									<p class="alert alert-warning">Payment Method</p>
 									<span>
 										<?php if($cus_info->cus_status == "VIP"){?>
-										<label><input type="radio"  name="payment_gateway" value="cash_on_delivery" checked> Cash on delivery</label><br>
-										<label><input type="radio"  name="payment_gateway" value="bank_deposit">Bank Deposit</label><br>
+										<label><input type="radio"  name="payment_gateway" value="cash_on_delivery" checked> Cash on delivery</label><br><br>
+										<label><input type="radio"  name="payment_gateway" value="bank_deposit"> Bank Deposit</label><br>
 										Bank Details:<br>
 										Bank: BPI<br>
 										Account Type: Savings<br>
 										Account Name: Nathaniel's Sans Rival<br>
-										Account #: 897-2232-000<br>
+										Account #: 897-2232-000<br><br>
+										<label><input type="radio"  name="payment_gateway" value="gcash"> Gcash</label><br>
+										Gcash Details:<br>
+										Name: Althea Remoroza<br>
+										Account #: 09178974200<br><br>
+										<label><input type="radio"  name="payment_gateway" value="paypal"> Paypal</label><br>
 										<?php }?>
 										<?php if($cus_info->cus_status == "Regular"){?>
-            							<label><input type="radio"  name="payment_gateway" value="bank_deposit" checked>Bank Deposit</label><br>
+            							<label><input type="radio"  name="payment_gateway" value="bank_deposit" checked> Bank Deposit</label><br>
 										Bank Details:<br>
 										Bank: BPI<br>
 										Account Type: Savings<br>
 										Account Name: Nathaniel's Sans Rival<br>
-										Account #: 897-2232-000<br>
+										Account #: 897-2232-000<br><br>
+										<label><input type="radio"  name="payment_gateway" value="gcash"> Gcash</label><br>
+										Gcash Details:<br>
+										Name: Althea Remoroza<br>
+										Account #: 09178974200<br><br>
+										<label><input type="radio"  name="payment_gateway" value="paypal"> Paypal</label><br>
 										<?php }?>
 										
 									</span>
-			
 								</div>
 								<div class="col-sm-6">
 								<div class="total_area">
@@ -222,6 +231,7 @@
 		</div>
 		<br>
 	</section> <!--/#cart_items-->
+
 	<script type="text/javascript">
 		var base_url = "<?php echo base_url()?>";
 

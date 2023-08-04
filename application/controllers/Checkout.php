@@ -89,20 +89,6 @@ class Checkout extends CI_Controller {
 		}
 	}
 	public function billing(){
-		// $client = new \GuzzleHttp\Client();
-
-		// $response = $client->request('POST', 'https://api.paymongo.com/v1/payment_methods', [
-		// 'body' => '{"data":{"attributes":{"type":"gcash"}}}',
-		// 'headers' => [
-		// 	'accept' => 'application/json',
-		// 	'authorization' => 'Basic cGtfdGVzdF9wTTluRHRLdDdyenh2WVNBWUQ4Rk5veXI6',
-		// 	'content-type' => 'application/json',
-		// ],
-		// ]);
-
-		// echo $response->getBody();
-		// exit();
-		
 		if($this->cart->total_items() == NULL) {
 			return redirect("show-cart");
 		}
@@ -185,6 +171,10 @@ class Checkout extends CI_Controller {
 		 $this->form_validation->set_rules('payment_gateway', 'Payment Method', 'trim|required');
 		if($this->form_validation->run()){
 
+			$session_data['b_name'] 	= $this->input->post('cus_name');
+			$session_data['b_lastname']	= $this->input->post('cus_lname');
+			$this->session->set_userdata($session_data);
+
 			$this->CheckoutModel->upate_billing_by_id();
 			$this->CheckoutModel->upate_shipping_by_id();	
 			$this->CheckoutModel->save_payment_info();
@@ -198,7 +188,10 @@ class Checkout extends CI_Controller {
 			$mdata['subject'] = "Order Successfully Complete......";
 	
 			$mdata['g_total'] = $this->session->userdata("g_total");
-	
+			
+			if($this->input->post('payment_gateway') == 'paypal'){
+				redirect('order-paypal');
+			}
 
 			$this->MailModel->Order_success_mail_send($mdata,'order_successfull');
 			$this->cart->destroy();
@@ -206,8 +199,6 @@ class Checkout extends CI_Controller {
 		}else{
 			$this->billing();
 		}
-
-
 
 	}
 	public function order_success(){
@@ -218,12 +209,33 @@ class Checkout extends CI_Controller {
 		$data['category_brand'] = $this->load->view('front/category','',true);
 		$this->load->view('front/index',$data);
 	}
+
+	public function order_paypal(){
+		$this->load->view('front/paypal');
+	}
+
+	public function order_paypal_success(){
+
+		$mdata = array();
+		$mdata['cus_full_name'] = $this->session->userdata("cus_name");
+		$mdata['to'] = $this->session->userdata("cus_email");
+		$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
+		$mdata['admin_full_name'] = "Nathaniels Sans Rival";
+		$mdata['subject'] = "Order Successfully Complete......";
+
+		$mdata['g_total'] = $this->session->userdata("g_total");
+
+		$this->MailModel->Order_success_mail_send($mdata,'order_successfull');
+
+		$data =array();
+		$data['slider'] = $this->load->view('front/slider','',true);
+		$data['recommended'] = $this->load->view('front/recommended','',true);
+		$data['main_content'] = $this->load->view('front/order_success','',true);
+		$data['category_brand'] = $this->load->view('front/category','',true);
+		
+		$this->load->view('front/index',$data);
+
+		$this->cart->destroy();
+	}
 	
-
-
-
-
-
-
-
 }
