@@ -124,7 +124,8 @@ $route['payment'] = 'Checkout/payment';
 $route['place-order'] = 'Checkout/place_order';
 $route['logout'] = 'Checkout/customer_logout';
 $route['order-success'] = 'Checkout/order_success';
-
+$route['order-paypal'] = 'Checkout/order_paypal';
+$route['order-paypal-success'] = 'Checkout/order_paypal_success';
 // Search
 $route['search'] = 'Search/index';
 
