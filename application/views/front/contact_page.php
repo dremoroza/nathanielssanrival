@@ -38,7 +38,7 @@
 							<p>109 Benito Drive Savvy 25 Severina Ave West Service Road</p>
 							<p>Parañaque, Philippines</p>
 							<p>Mobile: +63 917 550 6371</p>
-							<p>Email: Nathaniel_balatbat@yahoo.com<</p>
+							<p>Email: Nathaniel_balatbat@yahoo.com</p>
 	    				</address>
 	    				<div class="social-networks">
 	    					<h2 class="title text-center">Social Networking</h2>
