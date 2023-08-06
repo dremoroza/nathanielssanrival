@@ -236,18 +236,7 @@
 								<li><a href="/contact">Contact Us</a></li>
 							</ul>
 						</div>
-					</div>
-					<div class="col-sm-3 col-sm-offset-5">
-						<div class="single-widget">
-							<h2>Subscribe</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
-							</form>
-						</div>
-					</div>
-					
+					</div>					
 				</div>
 			</div>
 		</div>
@@ -268,10 +257,7 @@
 	<script src="<?php echo base_url()?>assets/front/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url()?>assets/front/js/jquery.scrollUp.min.js"></script>
 	<script src="<?php echo base_url()?>assets/front/js/price-range.js"></script>
-	<script src="<?php echo base_url()?>assets/front/js/jquery.prettyPhoto.js"></script>
 	<script src="<?php echo base_url()?>assets/front/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="<?php echo base_url()?>assets/front/js/gmaps.js"></script>
 
 	<script src="<?php echo base_url()?>assets/front/js/main.js"></script>
 	<script src="<?php echo base_url()?>assets/back/plugins/dataTables/jquery.dataTables.js"></script>

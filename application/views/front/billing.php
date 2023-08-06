@@ -152,12 +152,6 @@
 									<span>
 										<?php if($cus_info->cus_status == "VIP"){?>
 										<label><input type="radio"  name="payment_gateway" value="cash_on_delivery" checked> Cash on delivery</label><br><br>
-										<label><input type="radio"  name="payment_gateway" value="bank_deposit"> Bank Deposit</label><br>
-										Bank Details:<br>
-										Bank: BPI<br>
-										Account Type: Savings<br>
-										Account Name: Nathaniel's Sans Rival<br>
-										Account #: 897-2232-000<br><br>
 										<label><input type="radio"  name="payment_gateway" value="gcash"> Gcash</label><br>
 										Gcash Details:<br>
 										Name: Althea Remoroza<br>
@@ -165,13 +159,7 @@
 										<label><input type="radio"  name="payment_gateway" value="paypal"> Paypal</label><br>
 										<?php }?>
 										<?php if($cus_info->cus_status == "Regular"){?>
-            							<label><input type="radio"  name="payment_gateway" value="bank_deposit" checked> Bank Deposit</label><br>
-										Bank Details:<br>
-										Bank: BPI<br>
-										Account Type: Savings<br>
-										Account Name: Nathaniel's Sans Rival<br>
-										Account #: 897-2232-000<br><br>
-										<label><input type="radio"  name="payment_gateway" value="gcash"> Gcash</label><br>
+										<label><input type="radio"  name="payment_gateway" value="gcash" checked> Gcash</label><br>
 										Gcash Details:<br>
 										Name: Althea Remoroza<br>
 										Account #: 09178974200<br><br>

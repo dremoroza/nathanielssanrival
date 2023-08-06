@@ -127,7 +127,7 @@ class Home extends CI_Controller {
 		 
 				 // SMTP configuration
 				 $mail->isSMTP();
-				 $mail->Host     = 'smtp.nathanielsansrival.com';
+				 $mail->Host     = 'nathanielsansrival.com';
 				 $mail->SMTPAuth = true;
 				 $mail->Username = 'noreply@nathanielsansrival.com';
 				 $mail->Password = '[%^R@i5}b6AR';
@@ -135,36 +135,29 @@ class Home extends CI_Controller {
 				 $mail->Port     = 465;
 		 
 				 $mail->setFrom('noreply@nathanielsansrival.com', 'Nathaniel Sans Rival');
-				 $mail->addReplyTo('noreply@nathanielsansrival.com', 'Nathaniel Sans Rival');
+				 $mail->addReplyTo($this->input->post('contact_email'), $this->input->post('contact_name'));
 		 
 				 // Add a recipient
-				 $mail->addAddress('remorozadarrele@gmail.com');
-		 
-				 // Add cc or bcc 
-				//  $mail->addCC('cc@example.com');
-				//  $mail->addBCC('bcc@example.com');
+				 $mail->addAddress('noreply@nathanielsansrival.com');
 		 
 				 // Email subject
-				 $mail->Subject = 'Send Email via SMTP using PHPMailer in CodeIgniter';
+				 $mail->Subject = 'Contact US';
 		 
 				 // Set email format to HTML
 				 $mail->isHTML(true);
 		 
 				 // Email body content
-				 $mailContent = "<h1>Send HTML Email using SMTP in CodeIgniter</h1>
-					 <p>This is a test email sending using SMTP mail server with PHPMailer.</p>";
+				 $mailContent = "<p>Name: ". $this->input->post('contact_name') ."</p><p>Email: ". $this->input->post('contact_email') ."</p><p>Subject: ". $this->input->post('contact_subject') ."</p><p>Message:" . $this->input->post('contact_message') ." </p>";
 				 $mail->Body = $mailContent;
 		 
 				 // Send email
 				 if(!$mail->send()){
-					 echo 'Message could not be sent.';
-					 echo 'Mailer Error: ' . $mail->ErrorInfo;
-				 }else{
-					 echo 'Message has been sent';
+					$this->session->set_flashdata("flash_msg_success","<h3 class='alert alert-danger text-center'>Message Cannot Be Send.</h3>");
 				 }
-		// $this->ContactModel->insert_contact_data();
-		// $this->session->set_flashdata("flash_msg","<h3 class='alert alert-success text-center'>Message Send Successfully.</h3>");
-        //    redirect('contact');
+
+				$this->session->set_flashdata("flash_msg_success","<h3 class='alert alert-success text-center'>Message Send Successfully.</h3>");
+
+     			redirect('contact');
        }else{
        		$this->contact_page();
        }

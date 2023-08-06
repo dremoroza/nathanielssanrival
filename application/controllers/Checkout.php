@@ -238,4 +238,8 @@ class Checkout extends CI_Controller {
 		$this->cart->destroy();
 	}
 	
+	public function forgot_password(){
+		$data['main_content'] = $this->load->view('front/forgot_password','',true);
+		$this->load->view('front/index',$data);
+	}
 }
