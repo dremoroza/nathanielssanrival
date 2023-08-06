@@ -6,6 +6,7 @@ class MailModel extends CI_Model {
 		$this->load->library('email');
 		$this->email->set_mailtype('html');
 		$this->email->from($data['from'],$data['admin_full_name']);
+		$this->email->reply_to($data['from'],$data['admin_full_name']);
 		$this->email->to($data['to']);
 		$this->email->subject($data['subject']);
 		$message_body = $this->load->view("mailscripts/".$template_name,$data,true);
@@ -17,6 +18,7 @@ class MailModel extends CI_Model {
 		//$this->load->library('email');
 		$this->email->set_mailtype('html');
 		$this->email->from($data['from'],$data['admin_full_name']);
+		$this->email->reply_to($data['from'],$data['admin_full_name']);
 		$this->email->to($data['to']);
 		$this->email->subject($data['subject']);
 		$message_body = $this->load->view("mailscripts/".$template_name,$data,true);
