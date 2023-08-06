@@ -39,7 +39,7 @@ class Checkout extends CI_Controller {
 		// start registration Successfull mail 
 		$mdata = array();
 		$mdata['name'] = $this->input->post('cus_name') ." ". $this->input->post('cus_lname');
-		$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
+		$mdata['from'] = "noreply@nathanielsansrival.com";
 		$mdata['admin_full_name'] = "Nathaniels Sans Rival";
 		$mdata['to'] = $this->input->post('cus_email');
 		$mdata['subject'] = "Registration Successfull......";
@@ -183,7 +183,7 @@ class Checkout extends CI_Controller {
 			$mdata = array();
 			$mdata['cus_full_name'] = $this->session->userdata("cus_name");
 			$mdata['to'] = $this->session->userdata("cus_email");
-			$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
+			$mdata['from'] = "noreply@nathanielsansrival.com";
 			$mdata['admin_full_name'] = "Nathaniels Sans Rival";
 			$mdata['subject'] = "Order Successfully Complete......";
 	
@@ -219,7 +219,7 @@ class Checkout extends CI_Controller {
 		$mdata = array();
 		$mdata['cus_full_name'] = $this->session->userdata("cus_name");
 		$mdata['to'] = $this->session->userdata("cus_email");
-		$mdata['from'] = "Nathaniel_balatbat@yahoo.com";
+		$mdata['from'] = "noreply@nathanielsansrival.com";
 		$mdata['admin_full_name'] = "Nathaniels Sans Rival";
 		$mdata['subject'] = "Order Successfully Complete......";
 
