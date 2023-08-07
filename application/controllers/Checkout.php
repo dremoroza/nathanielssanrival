@@ -72,6 +72,7 @@ class Checkout extends CI_Controller {
 	}
 
 	public function customer_login(){
+
 		$cus_email = $this->input->post('cus_email',true);
 		$cus_pass = md5($this->input->post('cus_password',true));
 		$user_details = $this->CheckoutModel->get_user_login_by_email($cus_email);
@@ -237,5 +238,62 @@ class Checkout extends CI_Controller {
 
 		$this->cart->destroy();
 	}
+
+	public function forgot_password_email(){
+		$this->load->helper('string');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    	$data['email'] = $this->input->post('email');
+		unset($_SESSION['flash_msg_forgot']);
+		if($this->form_validation->run()){
+			$customer = $this->CheckoutModel->select_customer_email($this->input->post('email'));
+		
+			if($customer){
+				$mdata = array();
+				$mdata['token'] = random_string('alnum', 16);
+				$mdata['from'] = "noreply@nathanielsansrival.com";
+				$mdata['admin_full_name'] = "Nathaniels Sans Rival";
+				$mdata['to'] = $this->input->post('email');
+				$mdata['subject'] = "Forgot Password";
+				$this->MailModel->mail_send($mdata,'forgot-password-email');
+				$this->CheckoutModel->insert_reset_password($mdata['token']);
+				$this->session->set_flashdata('flash_msg_forgot','Reset password link has been sent to your email...');
+			}
+			
+			$data['email'] = $this->input->post('email');
+			$data['main_content'] = $this->load->view('front/forgot_email_password','',true);
+			$this->load->view('front/index',$data);
+		}else{		
+			unset($_SESSION['flash_msg_forgot']);
+			$data['email'] = $this->input->post('email');
+			$data['main_content'] = $this->load->view('front/forgot_email_password','',true);
+			$this->load->view('front/index',$data);
+
+		}
+
+	}
 	
+	public function forgot_password(){	
+		$this->form_validation->set_rules('cus_password', 'Password', 'trim|required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/]');
+		$this->form_validation->set_rules('con_pass', 'Password Confirmation', 'trim|required|matches[cus_password]');
+    	$email = isset($_GET['email']) ? $_GET['email']: '';
+		$token = isset($_GET['token']) ? $_GET['token']: '';
+		unset($_SESSION['flash_msg_forgot_scs']);
+		if($this->form_validation->run()){
+			
+			if($this->CheckoutModel->check_token($_GET['token'])){
+				//update password
+				$this->CheckoutModel->update_password($this->input->post('cus_password'), $token, $email);
+				$this->session->set_flashdata('flash_msg_forgot_scs','Password Successfully Change!');
+			}else{
+				$this->session->set_flashdata('flash_msg_forgot_scs','Token expired.');
+			}
+
+			$data['main_content'] = $this->load->view('front/forgot_password','',true);
+			$this->load->view('front/index',$data);
+		}else{
+			$data['main_content'] = $this->load->view('front/forgot_password','',true);
+			$this->load->view('front/index',$data);
+		}	
+		
+	}
 }

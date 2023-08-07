@@ -126,6 +126,8 @@ $route['logout'] = 'Checkout/customer_logout';
 $route['order-success'] = 'Checkout/order_success';
 $route['order-paypal'] = 'Checkout/order_paypal';
 $route['order-paypal-success'] = 'Checkout/order_paypal_success';
+$route['forgot-password'] = 'Checkout/forgot_password';
+$route['forgot-email-password'] = 'Checkout/forgot_password_email';
 // Search
 $route['search'] = 'Search/index';
 

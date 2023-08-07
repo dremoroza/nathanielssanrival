@@ -9,7 +9,7 @@
 	    		<div class="col-sm-8">
 	    			<div class="contact-form">
 	    				<h2 class="title text-center">Get In Touch</h2>
-	    				<?php echo $this->session->flashdata("flash_msg");?>
+	    				<?php echo $this->session->flashdata("flash_msg_success");?>
 	    				<div class="status alert alert-success" style="display: none"></div>
 				    	<form action="<?php echo base_url()?>contact-form" id="main-contact-form" class="contact-form row" name="contact-form" method="post">
 				            <div class="form-group col-md-6">

@@ -118,9 +118,46 @@ class Home extends CI_Controller {
 	public function insert_contact_info(){
 			$this->form_validation->set_rules('contact_email', 'Email', 'required|valid_email');
 		if($this->form_validation->run()){
-		$this->ContactModel->insert_contact_data();
-		$this->session->set_flashdata("flash_msg","<h3 class='alert alert-success text-center'>Message Send Successfully.</h3>");
-           redirect('contact');
+
+			     // Load PHPMailer library
+				 $this->load->library('phpmailer_lib');
+
+				 // PHPMailer object
+				 $mail = $this->phpmailer_lib->load();
+		 
+				 // SMTP configuration
+				 $mail->isSMTP();
+				 $mail->Host     = 'nathanielsansrival.com';
+				 $mail->SMTPAuth = true;
+				 $mail->Username = 'noreply@nathanielsansrival.com';
+				 $mail->Password = '[%^R@i5}b6AR';
+				 $mail->SMTPSecure = 'ssl';
+				 $mail->Port     = 465;
+		 
+				 $mail->setFrom('noreply@nathanielsansrival.com', 'Nathaniel Sans Rival');
+				 $mail->addReplyTo($this->input->post('contact_email'), $this->input->post('contact_name'));
+		 
+				 // Add a recipient
+				 $mail->addAddress('noreply@nathanielsansrival.com');
+		 
+				 // Email subject
+				 $mail->Subject = 'Contact US';
+		 
+				 // Set email format to HTML
+				 $mail->isHTML(true);
+		 
+				 // Email body content
+				 $mailContent = "<p>Name: ". $this->input->post('contact_name') ."</p><p>Email: ". $this->input->post('contact_email') ."</p><p>Subject: ". $this->input->post('contact_subject') ."</p><p>Message:" . $this->input->post('contact_message') ." </p>";
+				 $mail->Body = $mailContent;
+		 
+				 // Send email
+				 if(!$mail->send()){
+					$this->session->set_flashdata("flash_msg_success","<h3 class='alert alert-danger text-center'>Message Cannot Be Send.</h3>");
+				 }
+
+				$this->session->set_flashdata("flash_msg_success","<h3 class='alert alert-success text-center'>Message Send Successfully.</h3>");
+
+     			redirect('contact');
        }else{
        		$this->contact_page();
        }
