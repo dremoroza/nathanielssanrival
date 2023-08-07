@@ -11,6 +11,7 @@
 							
 							<input type="email" placeholder="Email Address" name="cus_email" />
 							<input type="password" placeholder="Password" name="cus_password" />
+							<a href="<?php echo base_url()?>forgot-email-password">Forgot Password?</a>
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->

@@ -145,5 +145,42 @@ class CheckoutModel extends CI_Model {
 
 
 	}
+
+	public function select_customer_email($email){
+		$data = $this->db->select('*')
+			->from('tbl_customer')
+			->where("cus_email",$email)
+			->get()
+			->row();
+			return $data;
+	}
+
+	public function insert_reset_password($token){
+		$data['token'] = $token;
+		$data['is_reset'] = 0;
+		$this->db->insert("tbl_password_reset",$data);
+		$id = $this->db->insert_id();
+		return $id;
+	}
+
+	public function check_token($token){
+		$data = $this->db->select('*')
+			->from('tbl_password_reset')
+			->where("token",$token)
+			->where("is_reset",0)
+			->get()
+			->row();
+			return $data;
+	}
+
+	public function update_password($password,$email,$token){
+		$data['cus_password'] =  md5($password);
+		$this->db->where("cus_email", $email);
+		$this->db->update("tbl_customer",$data);
+
+		$data2['is_reset'] =  1;
+		$this->db->where("token",$token);
+		$this->db->update("tbl_password_reset",$data2);
+	}
 	
 }
